@@ -24,14 +24,26 @@
     line-height:1.7;
     -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3{
-    font-family:Georgia, 'Times New Roman', serif;
-    color:var(--navy);
-    font-weight:normal;
-  }
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif; color:var(--navy); font-weight:normal;}
   a{color:inherit; text-decoration:none;}
   img{max-width:100%; display:block;}
   .wrap{max-width:1100px; margin:0 auto; padding:0 40px;}
+
+  /* SCROLL ANIMATION */
+  .reveal{
+    opacity:0;
+    transform:translateY(32px);
+    transition:opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .reveal-delay-1{transition-delay:0.1s;}
+  .reveal-delay-2{transition-delay:0.2s;}
+  .reveal-delay-3{transition-delay:0.3s;}
+  .reveal-delay-4{transition-delay:0.4s;}
+  .reveal-delay-5{transition-delay:0.5s;}
 
   /* NAV */
   nav{
@@ -98,8 +110,28 @@
   .edu-meta div{font-size:13.5px; color:var(--text-soft); margin-right:40px;}
   .edu-meta strong{display:block; color:var(--navy); font-size:19px; font-family:Georgia,serif;}
 
+  /* ACHIEVEMENTS */
+  .achieve-grid{display:flex; flex-wrap:wrap; margin:0 -12px;}
+  .achieve-card{
+    flex:1 1 calc(33.333% - 24px); margin:0 12px 24px;
+    background:var(--surface); border:1px solid var(--line); border-radius:8px;
+    padding:24px 26px; border-top:3px solid var(--accent);
+  }
+  .achieve-card .ach-label{
+    font-size:11px; letter-spacing:1px; text-transform:uppercase;
+    color:var(--accent); font-weight:500; margin-bottom:8px;
+  }
+  .achieve-card h4{font-size:16px; color:var(--navy); margin-bottom:6px; font-family:Georgia,serif; font-weight:normal;}
+  .achieve-card p{font-size:14px; color:var(--text-soft); line-height:1.6;}
+  .achieve-card .ach-status{
+    display:inline-block; margin-top:10px; font-size:11.5px;
+    padding:3px 10px; border-radius:20px; font-weight:500;
+  }
+  .status-done{background:#E8F5E9; color:#2E7D32;}
+  .status-ongoing{background:#FFF3E0; color:#E65100;}
+
   /* SKILLS */
-  .skills-wrap{background:var(--navy); padding:70px 0; color:#fff;}
+  .skills-wrap{background:#1A2A3A; padding:70px 0; color:#fff;}
   .skills-wrap .eyebrow{color:#C0622F;}
   .skills-wrap h2{color:#fff;}
   .skill-grid{display:flex; flex-wrap:wrap; margin:32px -10px 0;}
@@ -161,6 +193,7 @@
     .wrap{padding:0 24px;}
     .proj-card{flex:1 1 100%; margin:0 0 24px;}
     .skill-cat{flex:1 1 100%; margin:0 0 16px;}
+    .achieve-card{flex:1 1 100%; margin:0 0 16px;}
     .capstrip{flex-wrap:wrap;}
     .capstrip .item{flex:1 1 50%; border-bottom:1px solid var(--line); border-right:none;}
   }
@@ -173,6 +206,7 @@
     <div class="logo">Tanjina Akter Nisa</div>
     <div class="navlinks">
       <a href="#about">About</a>
+      <a href="#achievements">Achievements</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
@@ -182,10 +216,10 @@
 
 <header class="hero" id="home">
   <div class="wrap">
-    <div class="eyebrow">Computer Science & Engineering</div>
-    <h1>Final-year CSE student building across web, machine learning, and embedded systems.</h1>
-    <p class="lede">I'm Tanjina — based in Dhaka, studying at University of Asia Pacific. I work on projects that span disciplines, from NLP-powered tools to hardware systems. Currently looking for an internship where I can keep building and contribute to real products.</p>
-    <div class="btnrow">
+    <div class="eyebrow reveal">Computer Science & Engineering</div>
+    <h1 class="reveal reveal-delay-1">Final-year CSE student building across web, machine learning, and embedded systems.</h1>
+    <p class="lede reveal reveal-delay-2">I'm Tanjina — based in Dhaka, studying at University of Asia Pacific. I work on projects that span disciplines, from NLP-powered tools to hardware systems. Currently looking for an internship where I can keep building and contribute to real products.</p>
+    <div class="btnrow reveal reveal-delay-3">
       <a href="#projects" class="btn btn-primary">See my projects</a>
       <a href="#contact" class="btn btn-outline">Get in touch</a>
     </div>
@@ -201,16 +235,16 @@
 
 <section id="about">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="eyebrow">About Me</div>
       <h2>Background</h2>
     </div>
     <div class="about-grid">
-      <div class="about-text">
+      <div class="about-text reveal reveal-delay-1">
         <p>I'm a Computer Science & Engineering student at University of Asia Pacific with one semester left before graduating. Over the past few years I've worked across full-stack web development, machine learning, database design, and embedded systems — building projects that solve specific, real problems rather than staying purely theoretical.</p>
         <p>My most recent work focuses on applied NLP, including an AI-powered resume screening system using DistilBERT and SBERT. I'm looking for an internship where I can contribute to real products, learn from experienced engineers, and keep growing.</p>
       </div>
-      <div class="edu-card">
+      <div class="edu-card reveal reveal-delay-2">
         <h3>B.Sc. in Computer Science & Engineering</h3>
         <div class="school">University of Asia Pacific, Dhaka</div>
         <p style="color:var(--text-soft); font-size:15px;">7th semester completed — one semester remaining before graduation.</p>
@@ -223,30 +257,70 @@
   </div>
 </section>
 
+<section id="achievements">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Achievements & Activities</div>
+      <h2>Beyond the Classroom</h2>
+    </div>
+    <div class="achieve-grid">
+
+      <div class="achieve-card reveal reveal-delay-1">
+        <div class="ach-label">Competitive Programming</div>
+        <h4>ICPC Regional Contest</h4>
+        <p>Participated in the ICPC Regional Contest 2023 — one of the most prestigious competitive programming competitions globally, representing University of Asia Pacific.</p>
+        <span class="ach-status status-done">Completed · 2023</span>
+      </div>
+
+      <div class="achieve-card reveal reveal-delay-2">
+        <div class="ach-label">Cybersecurity</div>
+        <h4>CTF (Capture the Flag)</h4>
+        <p>Participated in CTF (Capture the Flag) competitions in 2025, applying skills in security analysis, cryptography, and problem-solving under time constraints.</p>
+        <span class="ach-status status-done">Completed · 2025</span>
+      </div>
+
+      <div class="achieve-card reveal reveal-delay-3">
+        <div class="ach-label">Ongoing Course</div>
+        <h4>Cybersecurity — Ostad</h4>
+        <p>Currently completing a structured cybersecurity course covering network security, ethical hacking fundamentals, and security best practices.</p>
+        <span class="ach-status status-ongoing">In Progress</span>
+      </div>
+
+      <div class="achieve-card reveal reveal-delay-4">
+        <div class="ach-label">Entrepreneurship</div>
+        <h4>ECDC Idea Season 4</h4>
+        <p>Competed in a university entrepreneurship competition at UAP — progressing through online selection, a workshop, and a final round judged by industry CEOs.</p>
+        <span class="ach-status status-done">Completed · 2024</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <div class="skills-wrap" id="skills">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="eyebrow">Technical Skills</div>
       <h2>What I work with</h2>
     </div>
     <div class="skill-grid">
-      <div class="skill-cat">
+      <div class="skill-cat reveal reveal-delay-1">
         <h4>Languages</h4>
         <p>Python, C, SQL, JavaScript, HTML, CSS</p>
       </div>
-      <div class="skill-cat">
+      <div class="skill-cat reveal reveal-delay-2">
         <h4>Web & Frameworks</h4>
         <p>Django, Bootstrap, MySQL, SQLite</p>
       </div>
-      <div class="skill-cat">
+      <div class="skill-cat reveal reveal-delay-3">
         <h4>Machine Learning & NLP</h4>
         <p>Scikit-learn, PyTorch, Hugging Face Transformers, DistilBERT, SBERT, TF-IDF</p>
       </div>
-      <div class="skill-cat">
+      <div class="skill-cat reveal reveal-delay-4">
         <h4>Embedded & Hardware</h4>
         <p>Arduino, microcontrollers, piezoelectric & IR sensors, Embedded C</p>
       </div>
-      <div class="skill-cat">
+      <div class="skill-cat reveal reveal-delay-5">
         <h4>Tools</h4>
         <p>Git, GitHub, LaTeX, Figma, phpMyAdmin, XAMPP</p>
       </div>
@@ -256,13 +330,13 @@
 
 <section id="projects">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <div class="eyebrow">Selected Work</div>
       <h2>Projects</h2>
     </div>
     <div class="proj-grid">
 
-      <div class="proj-card">
+      <div class="proj-card reveal reveal-delay-1">
         <div class="proj-tag">Machine Learning · NLP</div>
         <h3>CV Scanning & Job Candidate Ranking System</h3>
         <p class="proj-desc">An AI-powered resume screening tool that extracts skills and experience using NLP, compares candidates against job descriptions, and ranks applicants with explainable feedback.</p>
@@ -276,7 +350,7 @@
         <a href="https://github.com/tanjina-nisa/CV-Scanning-Job-Candidate-Ranking-System" class="ghlink" target="_blank">View on GitHub →</a>
       </div>
 
-      <div class="proj-card">
+      <div class="proj-card reveal reveal-delay-2">
         <div class="proj-tag">Web Development</div>
         <h3>Matrinest — Pregnancy Care Platform</h3>
         <p class="proj-desc">A Django web application supporting mothers from pregnancy through postpartum, with healthcare information, tracking features, and personalised resources.</p>
@@ -289,7 +363,7 @@
         <a href="https://github.com/tanjina-nisa/Matrinest-Pregnancy-Care-Platform/tree/main" class="ghlink" target="_blank">View on GitHub →</a>
       </div>
 
-      <div class="proj-card">
+      <div class="proj-card reveal reveal-delay-3">
         <div class="proj-tag">Database Systems</div>
         <h3>Lost and Found Management System</h3>
         <p class="proj-desc">A database-driven web app for reporting, searching, and managing lost and found items, with a full relational schema and ER diagram designed from scratch.</p>
@@ -302,7 +376,7 @@
         <a href="https://github.com/tanjina-nisa/Lost-and-found-management-system" class="ghlink" target="_blank">View on GitHub →</a>
       </div>
 
-      <div class="proj-card">
+      <div class="proj-card reveal reveal-delay-4">
         <div class="proj-tag">Embedded Systems · Robotics</div>
         <h3>Line Follower & Plant Watering Robot</h3>
         <p class="proj-desc">An autonomous robot that follows a predefined path using IR sensors and waters plants automatically based on real-time soil moisture readings.</p>
@@ -315,7 +389,7 @@
         <a href="https://github.com/tanjina-nisa/Robotics/tree/main/line-follower-plant-watering" class="ghlink" target="_blank">View on GitHub →</a>
       </div>
 
-      <div class="proj-card">
+      <div class="proj-card reveal reveal-delay-5">
         <div class="proj-tag">Microprocessor · IoT</div>
         <h3>Footstep Electricity Generation System</h3>
         <p class="proj-desc">A microcontroller-based system that harvests electrical energy from human footsteps using piezoelectric sensors and stores it for powering low-energy devices.</p>
@@ -331,31 +405,13 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Beyond Academics</div>
-      <h2>Extracurricular</h2>
-    </div>
-    <div class="extra-card">
-      <h3>ECDC Idea Season 4 — Business Idea Competition</h3>
-      <div class="org">Entrepreneurship & Career Development Club, University of Asia Pacific · 2024</div>
-      <p>Competed in a university-level entrepreneurship competition focused on solving real-world problems through business ideas — progressing through an online selection round, a workshop, and a final round presented to industry CEOs.</p>
-    </div>
-  </div>
-</section>
-
 <section id="contact">
   <div class="wrap">
-    <div class="contact-box">
+    <div class="contact-box reveal">
       <h2>Let's connect</h2>
       <p>I'm currently open to internship opportunities in software, data, or ML. Feel free to reach out — I'm always happy to chat.</p>
       <div class="contact-links">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tanjinanisa2002@gmail.com"
-   class="btn btn-outline"
-   target="_blank">
-    Email
-</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tanjinanisa2002@gmail.com" class="btn btn-primary" target="_blank">Email me</a>
         <a href="https://www.linkedin.com/in/tanjina-nisa-07b3b6277/" class="btn btn-outline" target="_blank">LinkedIn</a>
         <a href="https://github.com/tanjina-nisa" class="btn btn-outline" target="_blank">GitHub</a>
         <a href="https://github.com/tanjina-nisa/CV" class="btn btn-outline" target="_blank">CV</a>
@@ -367,6 +423,231 @@
 <footer>
   © 2026 Tanjina Akter Nisa. Built with care.
 </footer>
+
+<!-- AI CHATBOT -->
+<style>
+  #chat-toggle{
+    position:fixed; bottom:28px; right:28px; z-index:1000;
+    width:52px; height:52px; border-radius:50%;
+    background:var(--navy); border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 16px rgba(45,65,89,0.25);
+    transition:background .2s, transform .2s;
+  }
+  #chat-toggle:hover{background:#1E2E40; transform:scale(1.06);}
+  #chat-toggle svg{width:22px; height:22px; fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+  #chat-toggle .close-icon{display:none;}
+
+  #chat-box{
+    position:fixed; bottom:92px; right:28px; z-index:999;
+    width:340px; height:460px;
+    background:#fff; border:1px solid var(--line);
+    border-radius:12px; box-shadow:0 8px 32px rgba(45,65,89,0.15);
+    display:none; flex-direction:column; overflow:hidden;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+  }
+  #chat-box.open{display:flex;}
+
+  .chat-header{
+    background:var(--navy); color:#fff;
+    padding:14px 18px; display:flex; align-items:center; gap:10px;
+  }
+  .chat-avatar{
+    width:32px; height:32px; border-radius:50%;
+    background:var(--accent); display:flex; align-items:center;
+    justify-content:center; font-size:13px; font-weight:600; color:#fff; flex-shrink:0;
+  }
+  .chat-header-text{flex:1;}
+  .chat-header-name{font-size:14px; font-weight:500;}
+  .chat-header-sub{font-size:11.5px; opacity:0.75; margin-top:1px;}
+
+  .chat-messages{
+    flex:1; overflow-y:auto; padding:16px;
+    display:flex; flex-direction:column; gap:10px;
+    background:var(--bg);
+  }
+  .chat-messages::-webkit-scrollbar{width:4px;}
+  .chat-messages::-webkit-scrollbar-track{background:transparent;}
+  .chat-messages::-webkit-scrollbar-thumb{background:var(--line); border-radius:4px;}
+
+  .msg{max-width:86%; padding:10px 13px; border-radius:10px; font-size:14px; line-height:1.55;}
+  .msg.bot{background:#fff; border:1px solid var(--line); color:var(--text); align-self:flex-start; border-radius:4px 10px 10px 10px;}
+  .msg.user{background:var(--navy); color:#fff; align-self:flex-end; border-radius:10px 4px 10px 10px;}
+  .msg.typing{color:var(--text-soft); font-style:italic;}
+
+  .chat-suggestions{
+    padding:8px 16px 12px; display:flex; flex-wrap:wrap; gap:6px; background:var(--bg);
+    border-top:1px solid var(--line);
+  }
+  .suggestion{
+    font-size:12px; padding:5px 11px; border-radius:20px;
+    border:1px solid var(--line); background:#fff; color:var(--navy);
+    cursor:pointer; transition:all .15s; white-space:nowrap;
+  }
+  .suggestion:hover{background:var(--navy); color:#fff; border-color:var(--navy);}
+
+  .chat-input-row{
+    display:flex; border-top:1px solid var(--line); background:#fff;
+  }
+  #chat-input{
+    flex:1; border:none; outline:none; padding:12px 14px;
+    font-size:14px; font-family:inherit; background:transparent; color:var(--text);
+    resize:none;
+  }
+  #chat-input::placeholder{color:#aaa;}
+  #chat-send{
+    border:none; background:none; cursor:pointer;
+    padding:0 14px; color:var(--navy); transition:color .15s;
+    display:flex; align-items:center;
+  }
+  #chat-send:hover{color:var(--accent);}
+  #chat-send svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+</style>
+
+<button id="chat-toggle" aria-label="Open chat">
+  <svg class="chat-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <svg class="close-icon" viewBox="0 0 24 24" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+</button>
+
+<div id="chat-box">
+  <div class="chat-header">
+    <div class="chat-avatar">TN</div>
+    <div class="chat-header-text">
+      <div class="chat-header-name">Ask about Tanjina</div>
+      <div class="chat-header-sub">Usually replies instantly</div>
+    </div>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="msg bot">Hi! I'm an AI assistant for Tanjina's portfolio. Ask me about her skills, projects, or background. 👋</div>
+  </div>
+  <div class="chat-suggestions" id="suggestions">
+    <span class="suggestion">Her skills</span>
+    <span class="suggestion">ML projects</span>
+    <span class="suggestion">Web projects</span>
+    <span class="suggestion">Contact her</span>
+  </div>
+  <div class="chat-input-row">
+    <input id="chat-input" placeholder="Ask something..." maxlength="200"/>
+    <button id="chat-send">
+      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+const SYSTEM_PROMPT = `You are a helpful AI assistant on Tanjina Akter Nisa's portfolio website. Answer questions about her background, skills, and projects concisely (2-4 sentences max). Be warm and professional. Only answer questions related to Tanjina's portfolio.
+
+About Tanjina:
+- Final-year CSE student at University of Asia Pacific, Dhaka. CGPA 3.58. Started 2023.
+- Looking for internships in software, data, or ML.
+- Email: tanjinanisa2002@gmail.com
+- LinkedIn: linkedin.com/in/tanjina-nisa-07b3b6277
+- GitHub: github.com/tanjina-nisa
+
+Skills:
+- Languages: Python, C, SQL, JavaScript, HTML, CSS
+- Web: Django, Bootstrap, MySQL, SQLite
+- ML/NLP: Scikit-learn, PyTorch, Hugging Face, DistilBERT, SBERT, TF-IDF
+- Embedded: Arduino, microcontrollers, IR sensors, piezoelectric sensors, Embedded C
+- Tools: Git, GitHub, LaTeX, Figma, phpMyAdmin, XAMPP
+
+Projects:
+1. CV Scanning & Job Candidate Ranking System — AI resume screening using NLP (DistilBERT, SBERT, PyTorch, Scikit-learn). GitHub: github.com/tanjina-nisa/CV-Scanning-Job-Candidate-Ranking-System
+2. Matrinest — Django pregnancy care web platform. GitHub: github.com/tanjina-nisa/Matrinest-Pregnancy-Care-Platform
+3. Lost and Found Management System — MySQL/PHP database web app. GitHub: github.com/tanjina-nisa/Lost-and-found-management-system
+4. Line Follower & Plant Watering Robot — Arduino autonomous robot. GitHub: github.com/tanjina-nisa/Robotics
+5. Footstep Electricity Generation System — piezoelectric microcontroller system. GitHub: github.com/tanjina-nisa/Microprocessor-and-Microcontroller
+
+Achievements:
+- ICPC Regional Contest 2023 — representing University of Asia Pacific
+- CTF competitions 2025 — security analysis and cryptography
+- Cybersecurity course at Ostad (ongoing)
+- ECDC Idea Season 4 (2024) — final round judged by industry CEOs
+
+If asked anything unrelated to Tanjina, politely say you can only answer questions about her portfolio.`;
+
+const toggle = document.getElementById('chat-toggle');
+const chatBox = document.getElementById('chat-box');
+const messages = document.getElementById('chat-messages');
+const input = document.getElementById('chat-input');
+const sendBtn = document.getElementById('chat-send');
+const suggestions = document.getElementById('suggestions');
+const chatIcon = toggle.querySelector('.chat-icon');
+const closeIcon = toggle.querySelector('.close-icon');
+
+let history = [];
+let isLoading = false;
+
+toggle.addEventListener('click', () => {
+  const isOpen = chatBox.classList.toggle('open');
+  chatIcon.style.display = isOpen ? 'none' : 'block';
+  closeIcon.style.display = isOpen ? 'block' : 'none';
+  if(isOpen) input.focus();
+});
+
+document.querySelectorAll('.suggestion').forEach(s => {
+  s.addEventListener('click', () => {
+    input.value = s.textContent;
+    sendMessage();
+  });
+});
+
+sendBtn.addEventListener('click', sendMessage);
+input.addEventListener('keydown', e => { if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); sendMessage(); }});
+
+function addMsg(text, role){
+  const div = document.createElement('div');
+  div.className = 'msg ' + role;
+  div.textContent = text;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+  return div;
+}
+
+async function sendMessage(){
+  const text = input.value.trim();
+  if(!text || isLoading) return;
+  input.value = '';
+  suggestions.style.display = 'none';
+  isLoading = true;
+
+  addMsg(text, 'user');
+  history.push({ role:'user', content: text });
+
+  const typingEl = addMsg('Typing...', 'bot typing');
+
+  try {
+    const res = await fetch('/api/chat', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: history
+      })
+    });
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || 'Sorry, something went wrong.';
+    typingEl.textContent = reply;
+    typingEl.classList.remove('typing');
+    history.push({ role:'assistant', content: reply });
+  } catch(err) {
+    typingEl.textContent = 'Sorry, I could not connect right now.';
+    typingEl.classList.remove('typing');
+  }
+  isLoading = false;
+}
+</script>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
